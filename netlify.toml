@@ -2,6 +2,11 @@
   publish = "Public"
 
 [[redirects]]
+  from = "/scrape"
+  to = "https://simuladorcfi.netlify.app/scrape"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

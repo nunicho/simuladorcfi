@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       //const response = await fetch("/scrape");
       const response = await fetch("https://simuladorcfi.netlify.app/scrape");
       const data = await response.json();
-      console.log(data)
       const tasaFinal = data.tasaFinal;
       return tasaFinal * 100; // Asume que la tasa es en porcentaje
     } catch (error) {
