@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const obtenerTasaInteres = async () => {
     try {
       //const response = await fetch("/scrape");
-      const response = await fetch("https://simuladorcfi.netlify.app/scrape");
+      const response = await fetch("/scrape");
       const data = await response.json();
       const tasaFinal = data.tasaFinal;
       return tasaFinal * 100; // Asume que la tasa es en porcentaje
