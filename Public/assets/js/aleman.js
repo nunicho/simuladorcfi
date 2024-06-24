@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   // Función para obtener la tasa de interés
+
+  /*
   const obtenerTasaInteres = async () => {
     try {
       //const response = await fetch("/scrape");
@@ -12,7 +14,33 @@ document.addEventListener("DOMContentLoaded", async () => {
       return null;
     }
   };
+*/
 
+const obtenerTasaInteres = async () => {
+  try {
+    const response = await fetch("/scrape", {
+      method: "OPTIONS", // Preflight request for CORS check
+      mode: "cors", // Required for CORS requests
+      headers: {
+        "Access-Control-Request-Method": "GET",
+        "Access-Control-Request-Headers": "Content-Type",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("CORS preflight request failed");
+    }
+
+    // If preflight is successful, proceed with the actual GET request
+    const actualResponse = await fetch("/scrape");
+    const data = await actualResponse.json();
+    const tasaFinal = data.tasaFinal;
+    return tasaFinal * 100;
+  } catch (error) {
+    console.error("Error al obtener la tasa de interés:", error);
+    return null;
+  }
+};
   // Establecer la tasa de referencia en el div correspondiente
   const tasaInteres = await obtenerTasaInteres();
   const tasaValorElement = document.getElementById("tasa-valor");
