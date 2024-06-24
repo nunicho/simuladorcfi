@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Función para obtener la tasa de interés
   const obtenerTasaInteres = async () => {
     try {
-      const response = await fetch("/scrape");
+      //const response = await fetch("/scrape");
+      const response = await fetch("https://simuladorcfi.netlify.app/scrape");
       const data = await response.json();
       const tasaFinal = data.tasaFinal;
       return tasaFinal * 100; // Asume que la tasa es en porcentaje
